@@ -18,7 +18,7 @@ def write_output(result, outputFileName):
 	# assume result contains (val1, val2) tuples
 	with open(outputFileName, "w") as f:
 		for val1, val2 in result:
-			f.write(val1 + "," + val2 + "\n")
+			f.write(str(val1) + "," + str(val2) + "\n")
 
 
 if __name__ == "__main__":
