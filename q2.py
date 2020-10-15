@@ -34,11 +34,13 @@ if __name__ == "__main__":
 
 
 	result = []
+	# For each date, compute top 5 profitable companies
 	for i in range(numRows):
 		date = str(allCVSs[0][1].collect()[i].Date)
 
 		profits = [] # a list of (companyName, profit percentages for that company) tuples
 
+		# Iterate all companies df
 		for companyName, df in allCVSs:
 			row = df.collect()[i]
 			profit = (float(row["Close"]) - float(row["Open"])) / float(row["Open"])
@@ -47,3 +49,4 @@ if __name__ == "__main__":
 		profits.sort(key=lambda x : -x[1]) # sort according to profit in descending order
 		result.append((date, [x[0] for x in profits[:5]]))
 	write_output(result, "output_2.txt")
+
